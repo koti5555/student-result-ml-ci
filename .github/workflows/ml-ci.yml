@@ -43,7 +43,7 @@ jobs:
 
       - name: Validate generated ML artifact files
         run: |
-          test -f student_result_model_missing.pkl
+          test -f student_result_model.pkl
           test -f metrics.json
           test -f student_results.csv
 
