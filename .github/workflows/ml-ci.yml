@@ -41,6 +41,12 @@ jobs:
       - name: Run automated ML tests
         run: python -m unittest discover -v
 
+      - name: Validate generated ML artifact files
+        run: |
+          test -f student_result_model.pkl
+          test -f metrics.json
+          test -f student_results.csv
+
       - name: Upload validated ML artifacts
         uses: actions/upload-artifact@v7
         with:
