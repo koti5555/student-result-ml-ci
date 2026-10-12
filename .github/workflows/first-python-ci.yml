@@ -1,0 +1,36 @@
+name: First Python CI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "practical-1/**"
+      - ".github/workflows/first-python-ci.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "practical-1/**"
+      - ".github/workflows/first-python-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get project code
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+
+      - name: Run automated tests
+        working-directory: practical-1
+        run: python -m unittest discover -v
