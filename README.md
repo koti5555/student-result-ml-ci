@@ -31,7 +31,7 @@ After the quality gate and tests pass, the workflow uploads:
 - `metrics.json`
 - `student_results.csv`
 
-The artifact is named `student-result-ml-artifacts` and retained for seven days. Open the successful workflow run in **Actions** and use its Artifacts section to download it.
+The workflow first checks that each expected output exists, then uploads the artifact named `student-result-ml-artifacts` with a seven-day retention period. This explicit pre-upload validation is important: `if-no-files-found: error` in the upload action does not necessarily fail when just one path from a multi-file list is missing, as long as other files are found. Open the successful workflow run in **Actions** and use its Artifacts section to download it.
 
 ## Run the practicals
 
